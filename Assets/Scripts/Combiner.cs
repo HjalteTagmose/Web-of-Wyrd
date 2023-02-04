@@ -20,14 +20,14 @@ public class Combiner : Singleton<Combiner>
 	{
 		public Combinable a;
 		public Combinable b;
-		public Interactable result;
-		[Space(5)]
-		public Transform spawnLayer;
+		public GameObject result;
+		[Space]
+		public Transform spawnUnder;
 
 		public void Combine()
 		{
 			Debug.Log("Combining " + a.name + " and " + b.name);
-			Instantiate(result, spawnLayer);
+			Instantiate(result, spawnUnder);
 			Destroy(a.gameObject);
 			Destroy(b.gameObject);
 		}
