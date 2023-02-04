@@ -43,6 +43,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
 		{
 			yield return StartCoroutine(DoDialogue(dialogue));
 		}
+		Textbox.Instance.Clear();
 	}
 
 	IEnumerator DoDialogue(Dialogue dialogue)
@@ -55,7 +56,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
 		string[] lines = dialogue.text.Split('.');
 		foreach (var line in lines)
 		{
-			if (string.IsNullOrEmpty(line))
+			if (string.IsNullOrWhiteSpace(line))
 				continue;
 
 			yield return StartCoroutine(Textbox.Instance.WriteText(line));

@@ -234,7 +234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162759210}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.81, y: -3.85, z: 0}
+  m_LocalPosition: {x: -2.0600004, y: -3.85, z: 0}
   m_LocalScale: {x: 0.5537, y: 0.5537, z: 0.5537}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -604,7 +604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473592755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.86, y: 0.86, z: 0}
+  m_LocalPosition: {x: -5.95, y: 0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1533,7 +1533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915851220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.44, y: -4.62, z: 0}
+  m_LocalPosition: {x: 4.81, y: -4.62, z: 0}
   m_LocalScale: {x: 0.7332, y: 0.7332, z: 0.7332}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1580,7 +1580,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1237326797
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 8279437e29ac23d4689e52dcf47ef7a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1623,16 +1623,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intro:
   - speaker: {fileID: 1142980120}
-    text: "Oh, I am so tired of people. They peer into the cauldron asking to see
-      what the future holds for them and yet quickly turn on us when they see something
-      they rather not know. \r"
+    text: 'Oh, I am so tired of people.
+
+      They peer into the cauldron asking
+      to see what the future holds for them and yet turn on us when they see something
+      they''d rather not know.'
   - speaker: {fileID: 734954145}
-    text: 'Or do not like. They should know that it''s the Norns who have woven the
-      threads long ago. We just show them a reflection of what is already set. '
+    text: "Or do not like!. \nThey should know that it's the Norns, who have woven
+      the threads long ago. \nWe just show them a reflection of what is already set."
   - speaker: {fileID: 858964349}
-    text: 'We can''t blame them for being upset. The cauldron reveals secrets that
-      the mere mortal is not meant to know. What use is it anyway? They can''t escape
-      their destiny. '
+    text: "We can't blame them for being upset.\nThe cauldron reveals secrets that
+      the mere mortal were not meant to know. \nWhat use is it anyway?.\nThey can't
+      escape their destiny."
 --- !u!4 &922997222
 Transform:
   m_ObjectHideFlags: 0
@@ -2359,7 +2361,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2396,7 +2398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133ec507258d7b848bfe61f39e6a93b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
+  sr: {fileID: 0}
   fadeDuration: 1
 --- !u!1 &1749691013
 GameObject:

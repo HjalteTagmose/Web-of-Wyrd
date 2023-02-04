@@ -12,7 +12,7 @@ public class Fader : MonoBehaviour
 	void Start()
 	{
 		sr = GetComponent<SpriteRenderer>();
-		originalColor = sr.color;
+		originalColor = Color.black;
 		FadeOut(2f);
 	}
 
