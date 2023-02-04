@@ -1621,38 +1621,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5f65ffeb16fa64194e10ba97718d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogues:
-  - key: stop
-    next: stop
-    text: 'stop
-
-'
-    speaker: {fileID: 0}
-  - key: Intro
-    next: Intro1
-    text: "Three travelers are sitting around a fire, enjoying their evening meal.\nDeserved
-      after a long day of telling people their fate and fortunes with the help of
-      their magical cauldron. \nTheir evening of rest is suddenly disrupted by a
-      girl who seems worn and tired but still somehow exudes strength, like it is
-      buried deep inside her."
-    speaker: {fileID: 0}
-  - key: Intro1
-    next: Intro2
+  intro:
+  - speaker: {fileID: 1142980120}
     text: "Oh, I am so tired of people. They peer into the cauldron asking to see
       what the future holds for them and yet quickly turn on us when they see something
       they rather not know. \r"
-    speaker: {fileID: 1142980120}
-  - key: Intro2
-    next: Intro3
-    text: 'Or do not like! They should know that it''s the Norns who have woven the
+  - speaker: {fileID: 734954145}
+    text: 'Or do not like. They should know that it''s the Norns who have woven the
       threads long ago. We just show them a reflection of what is already set. '
-    speaker: {fileID: 734954145}
-  - key: Intro3
-    next: stop
+  - speaker: {fileID: 858964349}
     text: 'We can''t blame them for being upset. The cauldron reveals secrets that
       the mere mortal is not meant to know. What use is it anyway? They can''t escape
       their destiny. '
-    speaker: {fileID: 858964349}
 --- !u!4 &922997222
 Transform:
   m_ObjectHideFlags: 0
@@ -2329,13 +2309,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1675025550}
   - component: {fileID: 1675025549}
+  - component: {fileID: 1675025551}
   m_Layer: 0
   m_Name: Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1675025549
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2378,7 +2359,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8862745}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2403,6 +2384,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1675025551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675025548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133ec507258d7b848bfe61f39e6a93b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  fadeDuration: 1
 --- !u!1 &1749691013
 GameObject:
   m_ObjectHideFlags: 0

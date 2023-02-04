@@ -5,34 +5,48 @@ using UnityEngine;
 
 public class DialogueSystem : Singleton<DialogueSystem>
 {
-	public List<Dialogue> dialogues;
 	public bool InProgress { get; private set; }
+	
+	public List<Dialogue> intro;
+	private Dictionary<string, List<Dialogue>> dialogues;
 
-	public void StartDialogue(string key)
+	protected override void Awake()
+	{
+		base.Awake();
+		dialogues = new Dictionary<string, List<Dialogue>>
+		{
+			{ "intro", intro }
+		};
+	}
+
+	public void StartDialogue(string key, float delay = 0)
 	{
 		if (InProgress)
 			return;
 
-		InProgress = true;
-		var root = dialogues.Find(x => x.key == key);
-		if (root == null)
+		key = key.ToLower();
+		bool success = dialogues.TryGetValue(key, out var dialogue);
+		if (!success)
 		{
-			Debug.LogError($"{root} doesn't exist");
+			Debug.LogError($"{key} doesn't exist");
 			return;
 		}
-		StartCoroutine(DoDialogue(root));
+		
+		InProgress = true;
+		StartCoroutine(DoDialogues(dialogue, delay));
+	}
+
+	IEnumerator DoDialogues(List<Dialogue> dialogues, float delay = 0)
+	{
+		yield return new WaitForSeconds(delay);
+		foreach (var dialogue in dialogues)
+		{
+			yield return StartCoroutine(DoDialogue(dialogue));
+		}
 	}
 
 	IEnumerator DoDialogue(Dialogue dialogue)
 	{
-		// Check if reached end
-		if (dialogue.key == "stop")
-		{
-			Textbox.Instance.Clear();
-			InProgress = false;
-			yield break;
-		}
-
 		// Update position
 		if (dialogue.speaker != null)
 			Textbox.Instance.transform.position = dialogue.speaker.position + Vector3.up;
@@ -45,22 +59,14 @@ public class DialogueSystem : Singleton<DialogueSystem>
 				continue;
 
 			yield return StartCoroutine(Textbox.Instance.WriteText(line));
-			print(line);
 		}
-
-		// Start next dialogue
-		string key = dialogue.next;
-			InProgress = false;
-		StartDialogue(key);
 	}
 
 	[Serializable]
 	public class Dialogue
 	{
-		public string key;
-		public string next;
-		[Space, TextArea(3, 10)]
-		public string text;
 		public Transform speaker;
+		[TextArea(3, 10)]
+		public string text;
 	}
 }

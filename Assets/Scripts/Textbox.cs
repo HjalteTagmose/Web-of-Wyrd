@@ -14,6 +14,7 @@ public class Textbox : Singleton<Textbox>
 	{
 		base.Awake();
 		text = GetComponent<TextMeshPro>();
+		Clear();
 	}
 
 	public IEnumerator WriteText(string msg)
