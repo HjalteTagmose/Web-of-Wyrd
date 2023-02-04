@@ -33,8 +33,9 @@ public class DialogueSystem : Singleton<DialogueSystem>
 			yield break;
 		}
 
-		//// Update position
-		//Textbox.Instance.transform.position = dialogue.speaker.position;
+		// Update position
+		if (dialogue.speaker != null)
+			Textbox.Instance.transform.position = dialogue.speaker.position + Vector3.up;
 
 		// Write lines
 		string[] lines = dialogue.text.Split('.');
