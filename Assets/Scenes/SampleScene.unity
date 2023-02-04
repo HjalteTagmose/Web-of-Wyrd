@@ -209,6 +209,105 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &237345584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 237345585}
+  - component: {fileID: 237345587}
+  - component: {fileID: 237345586}
+  m_Layer: 0
+  m_Name: Fog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &237345585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237345584}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1066560157}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &237345586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237345584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034ca4e701f452949b461a4b4e2ac8c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highestPoint: {x: 0, y: 4}
+  duration: 8
+--- !u!212 &237345587
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237345584}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1202618197
+  m_SortingLayer: -3
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 43733314412c78e48a102c135cdfa546, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 76.8, y: 21.6}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &444722028
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +479,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -5.25}
-  m_SizeDelta: {x: 6.44, y: 4}
+  m_SizeDelta: {x: 15, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444722032
 MonoBehaviour:
@@ -394,7 +493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f80a2601bf405428a09e58e05723b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
+  holdTime: 2
+  speed: 0.05
 --- !u!1 &486772523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,18 +1520,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogues:
+  - key: stop
+    next: stop
+    text: 'stop
+
+'
+    speaker: {fileID: 0}
   - key: Intro
     next: Intro2
-    text: Dzien dobre, motherfuckers
+    text: "Three travelers are sitting around a fire, enjoying their evening meal.\nDeserved
+      after a long day of telling people their fate and fortunes with the help of
+      their magical cauldron. \nTheir evening of rest is suddenly disrupted by a
+      girl who seems worn and tired but still somehow exudes strength, like it is
+      buried deep inside her."
+    speaker: {fileID: 0}
+  - key: Intro1
+    next: Intro2
+    text: "Oh, I am so tired of people. They peer into the cauldron asking to see
+      what the future holds for them and yet quickly turn on us when they see something
+      they rather not know. \r"
     speaker: {fileID: 1142980120}
   - key: Intro2
     next: Intro3
-    text: Dzien dobre, motherfuckers
-    speaker: {fileID: 1142980120}
+    text: 'Or do not like! They should know that it''s the Norns who have woven the
+      threads long ago. We just show them a reflection of what is already set. '
+    speaker: {fileID: 734954145}
   - key: Intro3
-    next: 
-    text: Dzien dobre, motherfuckers
-    speaker: {fileID: 1142980120}
+    next: stop
+    text: 'We can''t blame them for being upset. The cauldron reveals secrets that
+      the mere mortal is not meant to know. What use is it anyway? They can''t escape
+      their destiny. '
+    speaker: {fileID: 858964349}
 --- !u!4 &922997222
 Transform:
   m_ObjectHideFlags: 0
@@ -1476,7 +1595,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 237345585}
   m_Father: {fileID: 30827183}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1686,7 +1806,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1258017062}
   - component: {fileID: 1258017063}
-  - component: {fileID: 1258017064}
   m_Layer: 0
   m_Name: Parralax_Fog
   m_TagString: Untagged
@@ -1705,7 +1824,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1421578612}
   m_Father: {fileID: 30827183}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1723,13 +1843,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxSpeedX: 0.5
   parallaxSpeedY: 0.5
---- !u!212 &1258017064
+--- !u!1 &1421578611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1421578612}
+  - component: {fileID: 1421578614}
+  - component: {fileID: 1421578613}
+  m_Layer: 0
+  m_Name: Fog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1421578612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421578611}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1258017062}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1421578613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421578611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034ca4e701f452949b461a4b4e2ac8c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highestPoint: {x: 0, y: 1}
+  duration: 8
+--- !u!212 &1421578614
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258017060}
+  m_GameObject: {fileID: 1421578611}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
