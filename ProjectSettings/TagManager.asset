@@ -44,11 +44,17 @@ TagManager:
   - name: Background2
     uniqueID: 3962757171
     locked: 0
+  - name: Background3
+    uniqueID: 985377393
+    locked: 0
   - name: Fog
     uniqueID: 483505943
     locked: 0
   - name: Fog2
     uniqueID: 1202618197
+    locked: 0
+  - name: PreMidground
+    uniqueID: 3515277075
     locked: 0
   - name: Midground
     uniqueID: 1075017371

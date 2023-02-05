@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Combiner : Singleton<Combiner>
 {
@@ -21,15 +22,15 @@ public class Combiner : Singleton<Combiner>
 		public Combinable a;
 		public Combinable b;
 		public GameObject result;
-		[Space]
-		public Transform spawnUnder;
+		public UnityEvent onCombine;
 
 		public void Combine()
 		{
 			Debug.Log("Combining " + a.name + " and " + b.name);
-			Instantiate(result, spawnUnder);
-			Destroy(a.gameObject);
-			Destroy(b.gameObject);
+			if (result) result.SetActive(true);
+			a.gameObject.SetActive(false);
+			b.gameObject.SetActive(false);
+			onCombine?.Invoke();
 		}
 	}
 }

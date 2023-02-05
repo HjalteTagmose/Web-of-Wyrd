@@ -7,13 +7,15 @@ public class Fader : MonoBehaviour
 	private float timer = 0f;
 	private bool fadeIn = false;
 	private bool fadeOut = false;
-	private Color originalColor;
+	public Color originalColor;
+	public bool fadeOnStart = true;
+	public bool clearOnStart = false;
 
 	void Start()
 	{
 		sr = GetComponent<SpriteRenderer>();
-		originalColor = Color.black;
-		FadeOut(2f);
+		if (clearOnStart) sr.color = Color.clear;
+		if (fadeOnStart) FadeOut(2f);
 	}
 
 	public void FadeIn(float duration)

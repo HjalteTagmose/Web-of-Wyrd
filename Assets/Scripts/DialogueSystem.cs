@@ -2,12 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogueSystem : Singleton<DialogueSystem>
 {
 	public bool InProgress { get; private set; }
-	
+
 	public List<Dialogue> intro;
+	public List<Dialogue> plantTalk;
+	public List<Dialogue> spindleRuneTalk;
+	public List<Dialogue> finalTalk;
 	private Dictionary<string, List<Dialogue>> dialogues;
 
 	protected override void Awake()
@@ -15,15 +19,20 @@ public class DialogueSystem : Singleton<DialogueSystem>
 		base.Awake();
 		dialogues = new Dictionary<string, List<Dialogue>>
 		{
-			{ "intro", intro }
+			{ "intro", intro },
+			{ "planttalk", plantTalk },
+			{ "spindlerunetalk", spindleRuneTalk },
+			{ "finaltalk", finalTalk },
 		};
+	}
+
+	public void StartDialogue(string key)
+	{
+		StartDialogue(key, 0);
 	}
 
 	public void StartDialogue(string key, float delay = 0)
 	{
-		if (InProgress)
-			return;
-
 		key = key.ToLower();
 		bool success = dialogues.TryGetValue(key, out var dialogue);
 		if (!success)
@@ -32,6 +41,10 @@ public class DialogueSystem : Singleton<DialogueSystem>
 			return;
 		}
 		
+		if (InProgress)
+			StopAllCoroutines();
+
+		dialogues.Remove(key);
 		InProgress = true;
 		StartCoroutine(DoDialogues(dialogue, delay));
 	}
@@ -48,18 +61,21 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
 	IEnumerator DoDialogue(Dialogue dialogue)
 	{
-		// Update position
-		if (dialogue.speaker != null)
-			Textbox.Instance.transform.position = dialogue.speaker.position + Vector3.up;
+		// Update target
+		Textbox.Instance.SetTarget(dialogue.speaker);
+
+		// Do start event
+		dialogue.onStartSpeak?.Invoke();
 
 		// Write lines
 		string[] lines = dialogue.text.Split('.');
 		foreach (var line in lines)
 		{
-			if (string.IsNullOrWhiteSpace(line))
+			string trimmedLine = line.Trim();
+			if (string.IsNullOrEmpty(trimmedLine))
 				continue;
 
-			yield return StartCoroutine(Textbox.Instance.WriteText(line));
+			yield return StartCoroutine(Textbox.Instance.WriteText(trimmedLine));
 		}
 	}
 
@@ -69,5 +85,6 @@ public class DialogueSystem : Singleton<DialogueSystem>
 		public Transform speaker;
 		[TextArea(3, 10)]
 		public string text;
+		public UnityEvent onStartSpeak;
 	}
 }
